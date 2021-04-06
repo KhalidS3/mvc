@@ -57,12 +57,14 @@ class Router
             sendResponse($body);
             return;
         } else if ($method === "GET" && $path === "/dice") {
-            $data = [
-                "header" => "Dice",
-                "message" => "Hey, edit this to do it youreself!",
-            ];
-            $body = renderView("layout/dice.php", $data);
-            sendResponse($body);
+            // $data = [
+            //     "header" => "Dice",
+            //     "message" => "Hey, edit this to do it youreself!",
+            // ];
+            // $body = renderView("layout/dice.php", $data);
+            // sendResponse($body);
+            $callable = new \KhalidS3\Dice\Game();
+            $callable->playGame();
             return;
         }
 

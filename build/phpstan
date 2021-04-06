@@ -1,33 +1,3 @@
- ------ ------------------------------------------------------------------------------------- 
-  Line   src\Dices\Game1.php                                                                  
- ------ ------------------------------------------------------------------------------------- 
-  77     Class KhalidS3\Dice\GraphicalDice constructor invoked with 1 parameter, 0 required.  
-  79     Call to an undefined method KhalidS3\Dice\GraphicalDice::renderDice().               
- ------ ------------------------------------------------------------------------------------- 
 
- ------ ----------------------------------------------------------------------------------------------------- 
-  Line   src\Dices\Games.php                                                                                  
- ------ ----------------------------------------------------------------------------------------------------- 
-  31     Property KhalidS3\Dice\Game::$player has unknown class KhalidS3\Dice\public as its type.             
-         💡 Learn more at https://phpstan.org/user-guide/discovering-symbols                                   
-  46     Property KhalidS3\Dice\Game::$player (KhalidS3\Dice\public) does not accept KhalidS3\Dice\DiceHand.  
-  47     Access to an undefined property KhalidS3\Dice\Game::$computer.                                       
- ------ ----------------------------------------------------------------------------------------------------- 
-
- ------ --------------------------------------------------------------------- 
-  Line   src\Dices\GraphicalDice.php                                          
- ------ --------------------------------------------------------------------- 
-  29     Access to an undefined property KhalidS3\Dice\GraphicalDice::$roll.  
- ------ --------------------------------------------------------------------- 
-
- ------ --------------------------------------------------------------------------- 
-  Line   src\Dices\GraphicalDiceHand.php                                            
- ------ --------------------------------------------------------------------------- 
-  31     Access to private property $dices of parent class KhalidS3\Dice\DiceHand.  
-  42     Access to private property $dices of parent class KhalidS3\Dice\DiceHand.  
-  45     Access to private property $dices of parent class KhalidS3\Dice\DiceHand.  
-  46     Access to private property $dices of parent class KhalidS3\Dice\DiceHand.  
- ------ --------------------------------------------------------------------------- 
-
- [ERROR] Found 10 errors                                                                                               
+ [OK] No errors                                                                                                        
 
