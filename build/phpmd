@@ -1,0 +1,4 @@
+C:\Users\khali\dbwebb-kurser\mvc\me\game\src\Dices\Game1.php:150	The method checkWinCondition() has a Cyclomatic Complexity of 11. The configured cyclomatic complexity threshold is 10.
+C:\Users\khali\dbwebb-kurser\mvc\me\game\src\Dices\Games.php:154	The method checkWinCondition() has a Cyclomatic Complexity of 11. The configured cyclomatic complexity threshold is 10.
+C:\Users\khali\dbwebb-kurser\mvc\me\game\src\Router\Router.php:23	The method dispatch() has a Cyclomatic Complexity of 42. The configured cyclomatic complexity threshold is 10.
+C:\Users\khali\dbwebb-kurser\mvc\me\game\src\Router\Router.php:23	The method dispatch() has 129 lines of code. Current threshold is set to 100. Avoid really long methods.

@@ -1,0 +1,14 @@
+phpcpd 6.0.3 by Sebastian Bergmann.
+
+Found 2 clones with 107 duplicated lines in 2 files:
+
+  - C:\Users\khali\dbwebb-kurser\mvc\me\game\src\Dices\Game1.php:130-203 (73 lines)
+    C:\Users\khali\dbwebb-kurser\mvc\me\game\src\Dices\Games.php:134-207
+
+  - C:\Users\khali\dbwebb-kurser\mvc\me\game\src\Dices\Game1.php:96-130 (34 lines)
+    C:\Users\khali\dbwebb-kurser\mvc\me\game\src\Dices\Games.php:100-134
+
+5.54% duplicated lines out of 1932 total lines of code.
+Average size of duplication is 53 lines, largest clone has 73 of lines
+
+Time: 00:00.033, Memory: 4.00 MB
