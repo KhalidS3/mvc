@@ -24,7 +24,6 @@ use function Mos\Functions\{
 class Game
 {
     /**
-     * @var array $datas[]
      * @var string $gameStatus        Games situation and progress.
      * @var object $playersHand       Object for players hand.
      * @var object $machinesHand       Object for computer/machine hand.
@@ -35,10 +34,6 @@ class Game
      *
      * setting class attributes to private
      */
-    private array $data = [
-        "header" => "Game21",
-        "message" => "Humans VS Machines"
-    ];
     private string $gameStatus = "";
     private ?object $playersHand = null;
     private ?object $machinesHand = null;
@@ -46,4 +41,25 @@ class Game
     private int $machineTotalScore = 0;
     private int $playerWins = 0;
     private int $machineWins = 0;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $_SESSION["game"] = $this->gameStatus["initGame"];
+        $this->data = [
+            "title" => "Game 21",
+            "header" => "Game 21",
+            "message" => "Humans VS Machines"
+        ];
+    }
+    public function playGame()
+    {
+        // $this->gameStatus ="initGame"
+        $this->data["gameStatus"] = $this->gameStatus;
+
+        $body = renderView("layout/dice.php", $this->data);
+        sendResponse($body);
+    }
 }

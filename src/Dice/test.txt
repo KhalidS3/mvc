@@ -1,0 +1,51 @@
+Pseudocode for Game.php
+
+Using my namespace
+namespace KhalidS3/Dice;
+
+using classes
+use KhalidS3/Dice/{
+    Dice,
+    DiceHand,
+    DiceGraphic,
+    DiceHandGraphic
+};
+
+use function Mos\Functions\{
+    redirectTo,
+    renderView,
+    sendResponse,
+    url
+};
+
+/**
+* Class for Game
+*/
+class Game {
+    creating the variables, arrays and objects to store information
+    in them.
+    Setting the class attributes private because its not needed be accessed
+    outside of the Game class.
+
+    $gameStatus;
+    object $playersHand /  null from the beginning
+    object $machinesHand / //    //   //    //
+    object $playersTotalScore / 0 at the start
+    object $machinesTotalScore / 0 at the start
+
+    create constructor
+    save gameStatus in session
+    $_SESSION["isRunning"] = $this->gameStatus["initGame"];
+    $data = [
+        "title" => "Game 21",
+        "header" => "Game 21",
+        "message" => "Humans VS Machines",
+    ];
+
+    playGame function, to start
+    $this->data["gameStatus"] = $this->gameStatus;
+    $body = renderView("layout/dice.php", $this->data);
+    sendResponse($body);
+
+
+}

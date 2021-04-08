@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Mos\Router;
 
+use KhalidS3\Dice\Game;
+
 use function Mos\Functions\{
     destroySession,
     redirectTo,
@@ -57,13 +59,7 @@ class Router
             sendResponse($body);
             return;
         } else if ($method === "GET" && $path === "/dice") {
-            // $data = [
-            //     "header" => "Dice",
-            //     "message" => "Hey, edit this to do it youreself!",
-            // ];
-            // $body = renderView("layout/dice.php", $data);
-            // sendResponse($body);
-            $callable = new \KhalidS3\Dice\Game();
+            $callable = isset($_SESSION["game21"]) ? $_SESSION["game21"] : new Game();
             $callable->playGame();
             return;
         }
