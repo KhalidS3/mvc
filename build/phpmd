@@ -1,9 +1,3 @@
-C:\Users\khali\dbwebb-kurser\mvc\me\game\src\Dice\Game.php:37	Avoid unused private fields such as '$gameStatus'.
-C:\Users\khali\dbwebb-kurser\mvc\me\game\src\Dice\Game.php:38	Avoid unused private fields such as '$playersHand'.
-C:\Users\khali\dbwebb-kurser\mvc\me\game\src\Dice\Game.php:39	Avoid unused private fields such as '$machinesHand'.
-C:\Users\khali\dbwebb-kurser\mvc\me\game\src\Dice\Game.php:40	Avoid unused private fields such as '$playersTotalScore'.
-C:\Users\khali\dbwebb-kurser\mvc\me\game\src\Dice\Game.php:41	Avoid unused private fields such as '$machineTotalScore'.
-C:\Users\khali\dbwebb-kurser\mvc\me\game\src\Dice\Game.php:42	Avoid unused private fields such as '$playerWins'.
-C:\Users\khali\dbwebb-kurser\mvc\me\game\src\Dice\Game.php:43	Avoid unused private fields such as '$machineWins'.
-C:\Users\khali\dbwebb-kurser\mvc\me\game\src\Router\Router.php:23	The method dispatch() has a Cyclomatic Complexity of 16. The configured cyclomatic complexity threshold is 10.
-C:\Users\khali\dbwebb-kurser\mvc\me\game\src\Router\Router.php:23	The method dispatch() has a Cyclomatic Complexity of 16. The configured cyclomatic complexity threshold is 10.
+C:\Users\khali\dbwebb-kurser\mvc\me\game\src\Dice\Game1.php:38	Avoid unused private fields such as '$diceType'.
+C:\Users\khali\dbwebb-kurser\mvc\me\game\src\Router\Router.php:23	The method dispatch() has a Cyclomatic Complexity of 36. The configured cyclomatic complexity threshold is 10.
+C:\Users\khali\dbwebb-kurser\mvc\me\game\src\Router\Router.php:23	The method dispatch() has 101 lines of code. Current threshold is set to 100. Avoid really long methods.

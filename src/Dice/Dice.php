@@ -14,7 +14,7 @@ class Dice
      * @var int $latestRoll Value of latest rolled dice.
      */
     // const FACES = 6;
-    private ?int $diceSides;
+    private int $diceSides;
     protected ?int $latestRoll = null;
 
     /**
@@ -36,7 +36,9 @@ class Dice
      */
     public function roll(): int
     {
-        return $this->latestRoll = rand(1, $this->diceSides);
+        $this->latestRoll = rand(1, $this->diceSides);
+
+        return $this->latestRoll;
     }
 
     /**

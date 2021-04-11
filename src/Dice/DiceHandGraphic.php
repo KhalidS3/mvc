@@ -49,7 +49,7 @@ class DiceHandGraphic extends DiceHand
     /**
      * @return array Array consisting of all rolled dice with images
      */
-    public function showAllRolledDice(): array
+    public function showAllRolledDiceGraph(): array
     {
         return $this->showAllDiceGraphics;
     }

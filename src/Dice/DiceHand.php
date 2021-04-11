@@ -15,9 +15,9 @@ class DiceHand
      * @var array $gameHistor[] Array consisting of games history
      * @var int   $diceSum The sum of rolled dices.
      */
-    protected array $dices;
-    protected array $results;
-    protected array $gameHistory;
+    protected array $dices = [];
+    protected array $results = [];
+    protected array $gameHistory = [];
     protected ?int $diceSum = 0;
 
     /**
@@ -91,7 +91,7 @@ class DiceHand
     /**
      * @return string Returns dice results/values comma separated
      */
-    public function showResult(): string
+    public function showResultOfLatestRoll(): string
     {
         $str = implode(", ", $this->results);
 

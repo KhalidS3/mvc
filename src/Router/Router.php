@@ -24,6 +24,7 @@ class Router
     {
         if ($method === "GET" && $path === "/") {
             $data = [
+                "title" => "Dice 21",
                 "header" => "Index page",
                 "message" => "Hello, this is the index page, rendered as a layout.",
             ];
@@ -59,8 +60,56 @@ class Router
             sendResponse($body);
             return;
         } else if ($method === "GET" && $path === "/dice") {
-            $callable = isset($_SESSION["game21"]) ? $_SESSION["game21"] : new Game();
+            $callable = isset($_SESSION["isRunning"]) ? $_SESSION["isRunning"] : new Game();
             $callable->playGame();
+
+            return;
+        } else if ($method === "POST" && $path === "/dice-setupDiceBoard") {
+            $numOfDice = intval($_POST["dice"]);
+            $typOfDice = ($_POST["diceType"]);
+
+            $callable = isset($_SESSION["isRunning"]) ? $_SESSION["isRunning"] : null;
+
+            if ($callable) {
+            $callable->setupDiceBoard($numOfDice, $typOfDice);
+            }
+
+            redirectTo(url("/dice"));
+             return;
+        } else if ($method === "POST" && $path === "/dice-human-roll") {
+            $callable = isset($_SESSION["isRunning"]) ? $_SESSION["isRunning"] : null;
+
+            if ($callable) {
+                $callable->humanRoll();
+            }
+            redirectTo(url("/dice"));
+             return;
+        } else if ($method === "POST" && $path === "/dice-human-stop") {
+            $callable = isset($_SESSION["isRunning"]) ? $_SESSION["isRunning"] : null;
+
+            if ($callable) {
+                $callable->machineRoll();
+            }
+
+            redirectTo(url("/dice"));
+            return;
+        } else if ($method === "POST" && $path === "/dice-play-again") {
+            $callable = isset($_SESSION["isRunning"]) ? $_SESSION["isRunning"] : null;
+
+            if ($callable) {
+                $callable->playAgain();
+            }
+
+            redirectTo(url("/dice"));
+            return;
+        } else if ($method === "POST" && $path === "/dice-all-reset-score") {
+            $callable = isset($_SESSION["isRunning"]) ? $_SESSION["isRunning"] : null;
+
+            if ($callable) {
+                $callable->resetALlScore();
+            }
+
+            redirectTo(url("/dice"));
             return;
         }
 

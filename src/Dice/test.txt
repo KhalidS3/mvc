@@ -28,11 +28,11 @@ class Game {
     outside of the Game class.
 
     $gameStatus;
-    object $playersHand /  null from the beginning
+    object $humansHand /  null from the beginning
     object $machinesHand / //    //   //    //
-    object $playersTotalScore / 0 at the start
+    object $humansTotalScore / 0 at the start
     object $machinesTotalScore / 0 at the start
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     create constructor
     save gameStatus in session
     $_SESSION["isRunning"] = $this->gameStatus["initGame"];
@@ -41,11 +41,129 @@ class Game {
         "header" => "Game 21",
         "message" => "Humans VS Machines",
     ];
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    initGame function, to setup the game board
+    takes one argument numOfDices, void
+    1. To show humans dice graphically
+    this->humansHand = new DiceHandGraphic($numOfDices);
+    2. To show machines dice graphically.
+    this->machinesHand = new DiceHandGraphic($numOfDices);
+
+    3. Setting the humanshand, dice graphically to null
+    this->data["humansTurn"] = null;
+    this->data["humansSum"] = null; // total sum of humans rolled dices.
+    this->data["humansTotalScore"] = null;
+    this->data["showHumansGraphicalDice"] = null;
+    this->data["showResultOfHumansLatestRoll"] = null;
+    this->data["showResultOfHumansLatestRollGraphiclly"] = null;
+
+    4. Setting the machineshand, dice graphically to null
+    this->data["machineTurn"] = null;
+    this->data["machineSum"] = null; // total sum of machines rolled dices.
+    this->data["machinesTotalScore"] = null;
+    this->data["showMachinesGraphicalDice"] = null;
+    this->data["showResultOfMachinesLatestRoll"] = null;
+    this->data["showResultOfMachinesLatestRollGraphiclly"] = null;
+
+    // 5. Setting the jackpot number(21) to null too
+    $this->data["jackPot"] = null;
+
+    humans turn comes first
+    this->gameStatus = "humansTurnToRollDice";
+
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    machinesTurn function: takes no arguments, returns void
+    loop to until machine wins or loses
+    while (this->machinesTotalScore <= 21 &&
+        this->machinesTotalScore < this->humansTotalScore>) {
+            1. starts with dice roll first
+            this->machinesHand->roll();
+            2. to show machinesHand latest rolled dices
+            this->data["machinesTurn"] = $this->machinesHand->showResultOfLastestRoll();
+            3. to show all rolled dice results
+            this->data["showResultOfMachinesLatestRoll"] = $this->machinesHand->showHistory();
+            4. Add all rolled dice
+            $this->machinesHand->totalSumOfLatestRoll();
+            5. After summing all dices assign/save it to machinesum in data, increase dice value
+            with sum
+            this->data["machineSum"] = this->machinesHand->getTotalSumOfRolledDice();
+            this->machineSum += $this->machinesHand->getTotalSumOfRolledDice();
+            6. After that save machines total sum in data, to see if won or lost
+            this->data["machinesTotalScore"] = this->machinesTotalScore;
+            7. show dice graphically
+            this->data["showMachinesGraphicalDice"] = this->machinesHand->showDiceHandGraph();
+            this->data["showResultOfMachinesLatestRollGraphiclly"] = this->machinesHand->showAllRolledDiceGraph();
+    }
+
+    1. setting game status to machines turn
+    this->gameStatus = "machinesTurn";
+
+   2. check if its jackPot, if machinesTotalScore is 21
+        declare machines winner, else declare lost
+    if (this->machinesTotalScore <= 21 &&
+        this->machinesTotalScore >= this->humansTotalScore) {
+            this->data["gameResult"] = "You got terminated. Machines won!!!";
+            this->machineWins++;
+        } else if (this->machinesTotalScore > 21 || this->machinesTotalScore < this->humansTotalScore) {
+            this->data["gameResult"] = "Humans won, time to terminate machines";
+            this->humanWins++;
+        }
+
+        this->data["machinesWins"] = this->machinesWins;
+        this->data["humanWins"] = this->humanWins;
+
+        this->gameStatus = "terminated";
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    humansTurn function: takes no arguments, returns void
+    1. starts with dice roll first
+    this->humansHand->roll();
+    2. to show humansHand latest rolled dices
+    this->data["humansTurn"] = $this->humansHand->showResultOfLastestRoll();
+    3. to show all rolled dice results
+    this->data["showResultOfHumansLatestRoll"] = $this->humansHand->showHistory();
+    4. Add all rolled dice
+    $this->humansHand->totalSumOfLatestRoll();
+    5. After summing all dices assign/save it to humanSum in data, increase dice value
+    with sum
+    this->data["humanSum"] = this->humansHand->getTotalSumOfRolledDice();
+    this->humanSum += $this->humansHand->getTotalSumOfRolledDice();
+    6. After that save humans total sum in data, to see if won or lost
+    this->data["humansTotalScore"] = this->humansTotalScore;
+    7. show dice graphically
+    this->data["showHumansGraphicalDice"] = this->humansHand->showDiceHandGraph();
+    this->data["showResultOfHumansLatestRollGraphiclly"] = this->humansHand->showAllRolledDiceGraph();
+
+    8. check if its jackPot, if humansTotalScore is 21
+    declare human winner, else declare lost
+    if (this->humansTotalScore === 21) {
+        this->data["jackPot"] = "Congrats you hit jackpot";
+    } else if (this->humansTotalScore > 21) {
+        this->gameStatus = "terminated";
+        this->data["gameResult"] = "You got terminated. Machines won!!!";
+        this->machineWins++;
+        // record human and machines winnings and loses
+        this->data["machineWins"] = this->machineWins;
+        this->data["humanWins"] = this->humanWins;
+    }
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    tryOnceMore function if humans have lost more than 10 times they can
+    play again
+    1. setting tryOnceMore value to null
+    this->data["tryOnceMore"] = null;
+
+    2. checking to see if either human or machines winnings record is
+    below 0
+    if (this->humanWins <= 10) {
+
+    }
+
 
     playGame function, to start
     $this->data["gameStatus"] = $this->gameStatus;
     $body = renderView("layout/dice.php", $this->data);
     sendResponse($body);
-
-
 }
